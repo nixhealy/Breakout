@@ -21,7 +21,7 @@ fire ball (green)
 
 ## Suggested tasks
 
-* Implement mouse input for pad
+* Implement mouse input for pad (done!)
 * Improved VFX (ball trail, paddle hit response, brick particle destruction)
 * Better UI (progress bar rather than timer for countdown).
 * GameLoop
@@ -33,4 +33,5 @@ fire ball (green)
 
 # Time Details and Changelist
 <Add information to this section about the time you've taken for this task along with a professional changelist.>
-- Added mouse control (Like an hour, but now I know what I'm doing, probably.)
+- Added mouse control (Time: Like an hour, but now I know what I'm doing, probably.)
+  - Made velocity non-linear (Time: Fifteen minutes)

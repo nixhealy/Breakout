@@ -81,8 +81,16 @@ void GameManager::update(float dt)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) _paddle->moveRight(dt);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) _paddle->moveLeft(dt);
 
-    if (sf::Mouse::getPosition(*_window).x > _paddle->getPosition()) _paddle->moveRight(dt * 2);;
-    if (sf::Mouse::getPosition(*_window).x < _paddle->getPosition()) _paddle->moveLeft(dt * 2);
+    if (_window->getViewport(_window->getView()).contains(sf::Mouse::getPosition(*_window).x, sf::Mouse::getPosition(*_window).y)) {
+        if (sf::Mouse::getPosition(*_window).x > _paddle->getPosition())
+        {
+            _paddle->moveRight(dt * log10(sf::Mouse::getPosition(*_window).x - _paddle->getPosition()));
+        }
+        if (sf::Mouse::getPosition(*_window).x < _paddle->getPosition())
+        {
+            _paddle->moveLeft(dt * log10(_paddle->getPosition() - sf::Mouse::getPosition(*_window).x));;
+        }
+    }
 
     // update everything 
     _paddle->update(dt);
