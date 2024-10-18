@@ -20,6 +20,9 @@ UI::UI(sf::RenderWindow* window, int lives, GameManager* gameManager)
 	_powerupText.setCharacterSize(30);
 	_powerupText.setPosition(800, 10);
 	_powerupText.setFillColor(sf::Color::Cyan);
+	_powerupRect.setSize(sf::Vector2f(10.f, 10.f));
+	_powerupRect.setPosition(sf::Vector2f(800, 40));
+	_powerupRect.setFillColor(sf::Color::Cyan);
 	_font.loadFromFile("font/montS.ttf");
 	_powerupText.setFont(_font);
 }
@@ -39,30 +42,40 @@ void UI::updatePowerupText(std::pair<POWERUPS, float> powerup)
 		oss << std::fixed << std::setprecision(2) << powerup.second;
 		_powerupText.setString("big " + oss.str());
 		_powerupText.setFillColor(paddleEffectsColour);
+		_powerupRect.setSize(sf::Vector2f(powerup.second / 5 * 150, 10));
+		_powerupRect.setFillColor(paddleEffectsColour);
 		break;
 	case smallPaddle:
 		oss << std::fixed << std::setprecision(2) << powerup.second;
 		_powerupText.setString("small " + oss.str());
 		_powerupText.setFillColor(paddleEffectsColour);
+		_powerupRect.setSize(sf::Vector2f(powerup.second / 5 * 150, 10));
+		_powerupRect.setFillColor(paddleEffectsColour);
 		break;
 	case slowBall:
 		oss << std::fixed << std::setprecision(2) << powerup.second;
 		_powerupText.setString("slow " + oss.str());
 		_powerupText.setFillColor(ballEffectsColour);
+		_powerupRect.setSize(sf::Vector2f(powerup.second / 5 * 150, 10));
+		_powerupRect.setFillColor(ballEffectsColour);
 		break;
 	case fastBall:
 		oss << std::fixed << std::setprecision(2) << powerup.second;
 		_powerupText.setString("fast " + oss.str());
 		_powerupText.setFillColor(ballEffectsColour);
+		_powerupRect.setSize(sf::Vector2f(powerup.second / 5 * 150, 10));
+		_powerupRect.setFillColor(ballEffectsColour);
 		break;
 	case fireBall:
 		oss << std::fixed << std::setprecision(2) << powerup.second;
 		_powerupText.setString("fire " + oss.str());
 		_powerupText.setFillColor(extraBallEffectsColour);
+		_powerupRect.setSize(sf::Vector2f(powerup.second / 5 * 150, 10));
+		_powerupRect.setFillColor(extraBallEffectsColour);
 		break;
 	case none:
 		_powerupText.setString("");
-		
+		_powerupRect.setSize(sf::Vector2f(0, 0));
 		break;
 	}
 }
@@ -75,6 +88,7 @@ void UI::lifeLost(int lives)
 void UI::render()
 {
 	_window->draw(_powerupText);
+	_window->draw(_powerupRect);
 	for (sf::CircleShape life : _lives)
 	{
 		_window->draw(life);

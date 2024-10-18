@@ -17,7 +17,7 @@ fire ball (green)
 
 ## Suggested fixes
 
-* Fix the compiler issues in the code
+* Fix the compiler issues in the code (done!)
 
 ## Suggested tasks
 
@@ -35,3 +35,4 @@ fire ball (green)
 <Add information to this section about the time you've taken for this task along with a professional changelist.>
 - Added mouse control (Time: Like an hour, but now I know what I'm doing, probably.)
   - Made velocity non-linear (Time: Fifteen minutes)
+- Added a timer bar (Time: I got distracted. This actually took like twenty minutes.)

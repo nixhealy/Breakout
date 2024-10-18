@@ -28,5 +28,7 @@ private:
 
 	static constexpr float LIFE_RADIUS = 15.0f;
 	static constexpr float LIFE_PADDING = 20.0f;
+
+	sf::RectangleShape _powerupRect;
 };
 
