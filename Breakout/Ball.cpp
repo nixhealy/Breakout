@@ -62,8 +62,7 @@ void Ball::update(float dt)
     // lose life bounce
     if (position.y > windowDimensions.y)
     {
-        _sprite.setPosition(0, 300);
-        _direction = { 1, 1 };
+        reset();
         _gameManager->loseLife();
     }
 
@@ -113,4 +112,9 @@ void Ball::setFireBall(float duration)
     }
     _isFireBall = false;
     _timeWithPowerupEffect = 0.f;    
+}
+
+void Ball::reset() {
+    _sprite.setPosition(0, 300);
+    _direction = { 1, 1 };
 }

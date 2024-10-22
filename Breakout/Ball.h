@@ -14,6 +14,7 @@ public:
     void render();
     void setVelocity(float coeff, float duration);
     void setFireBall(float duration);
+    void reset();
 
 private:
     sf::CircleShape _sprite;

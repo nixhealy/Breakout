@@ -34,17 +34,33 @@ void GameManager::update(float dt)
 {
     _powerupInEffect = _powerupManager->getPowerupInEffect();
     _ui->updatePowerupText(_powerupInEffect);
-    _powerupInEffect.second -= dt;
     
+    if (_isDead) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+            _masterText.setString("");
+            _isDead = false;
+            _brickManager->createBricks(5, 10, 80.0f, 30.0f, 5.0f);
+            _lives = INITIAL_LIVES;
+            _ui->lifeFill(_lives);
+            delete _paddle;
+            _paddle = new Paddle(_window);
+            delete _ball;
+            _ball = new Ball(_window, 400.0f, this);
+            delete _powerupManager;
+            _powerupManager = new PowerupManager(_window, _paddle, _ball);
+        }
+    }
 
     if (_lives <= 0)
     {
-        _masterText.setString("Game over.");
+        _masterText.setString("Game over.\nPress space to restart.");
+        _isDead = true;
         return;
     }
     if (_levelComplete)
     {
-        _masterText.setString("Level completed.");
+        _masterText.setString("Level completed.\nPress space to restart.");
+        _isDead = true;
         return;
     }
     // pause and pause handling
@@ -97,6 +113,7 @@ void GameManager::update(float dt)
     _ball->update(dt);
     _powerupManager->update(dt);
     _particleManager->update(dt);
+    _brickManager->update(dt);
 }
 
 void GameManager::loseLife()
