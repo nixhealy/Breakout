@@ -21,7 +21,7 @@ UI::UI(sf::RenderWindow* window, int lives, GameManager* gameManager)
 	_powerupText.setPosition(800, 10);
 	_powerupText.setFillColor(sf::Color::Cyan);
 	_powerupRect.setSize(sf::Vector2f(10.f, 10.f));
-	_powerupRect.setPosition(sf::Vector2f(800, 40));
+	_powerupRect.setPosition(sf::Vector2f(800, 50));
 	_powerupRect.setFillColor(sf::Color::Cyan);
 	_font.loadFromFile("font/montS.ttf");
 	_powerupText.setFont(_font);

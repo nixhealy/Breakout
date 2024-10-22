@@ -3,7 +3,8 @@
 #include "Brick.h"
 #include <SFML/Graphics.hpp>
 
-class GameManager;
+class GameManager; 
+class ParticleManager;
 
 class BrickManager {
 public:

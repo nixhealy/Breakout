@@ -8,7 +8,7 @@
 #include "MessagingSystem.h"
 #include "UI.h"
 
-
+#include "ParticleManager.h"
 
 class GameManager {
 public:
@@ -23,6 +23,7 @@ public:
     Paddle* getPaddle() const;
     BrickManager* getBrickManager() const;
     PowerupManager* getPowerupManager() const;
+    ParticleManager* getParticleManager() const;
     sf::RenderWindow* getWindow() const;
     UI* getUI() const;
 
@@ -45,6 +46,7 @@ private:
     BrickManager* _brickManager;
     PowerupManager* _powerupManager;
     MessagingSystem* _messagingSystem;
+    ParticleManager* _particleManager;
     UI* _ui;
 
     static constexpr float PAUSE_TIME_BUFFER = 0.5f;

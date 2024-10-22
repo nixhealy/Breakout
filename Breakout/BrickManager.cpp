@@ -1,5 +1,6 @@
 #include "BrickManager.h"
 #include "GameManager.h"
+#include "ParticleManager.h"
 
 BrickManager::BrickManager(sf::RenderWindow* window, GameManager* gameManager)
     : _window(window), _gameManager(gameManager)
@@ -46,8 +47,11 @@ int BrickManager::checkCollision(sf::CircleShape& ball, sf::Vector2f& direction)
             // unless it's horizontal (collision from side)
             collisionResponse = 1;
 
+
+
         // Mark the brick as destroyed (for simplicity, let's just remove it from rendering)
         // In a complete implementation, you would set an _isDestroyed flag or remove it from the vector
+        _gameManager->getParticleManager()->createParticles(sf::Vector2f(brick.getPosition().x + BRICK_WIDTH / 2, brick.getPosition().y + BRICK_HEIGHT / 2), sf::Color::Red);
         brick = _bricks.back();
         _bricks.pop_back();
         break;
