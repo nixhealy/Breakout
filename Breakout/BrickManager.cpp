@@ -26,6 +26,8 @@ BrickManager::BrickManager(sf::RenderWindow* window, GameManager* gameManager)
     sf::SoundBuffer b;
     b.loadFromFile("audio/b.wav");
     _buffers.push_back(b);
+
+    _shader.loadFromFile("brick_shader.frag", sf::Shader::Fragment);
 }
 
 void BrickManager::createBricks(int rows, int cols, float brickWidth, float brickHeight, float spacing)
@@ -50,7 +52,8 @@ void BrickManager::createBricks(int rows, int cols, float brickWidth, float bric
 void BrickManager::render()
 {
     for (auto& brick : _bricks) {
-        brick.render(*_window);
+        if (_combo > 0) { brick.render(*_window, _shader); }
+        else { brick.render(*_window); }
     }
 }
 
@@ -94,9 +97,13 @@ int BrickManager::checkCollision(sf::CircleShape& ball, sf::Vector2f& direction)
 void BrickManager::update(float dt) {
     if (_combo > 0) {
         _time += dt;
+        _fulltime += dt;
     }
     if (_time > 3) {
         _combo = 0;
         _time = 0;
+        _fulltime = 0;
     }
+
+    _shader.setUniform("time", _fulltime);
 }

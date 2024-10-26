@@ -8,8 +8,14 @@ Brick::Brick(float x, float y, float width, float height)
     _shape.setFillColor(sf::Color::Red);
 }
 
-void Brick::render(sf::RenderWindow& window)
+void Brick::render(sf::RenderWindow& window, sf::Shader& shader)
 {
+    if (!_isDestroyed) {
+        window.draw(_shape, &shader);
+    }
+}
+
+void Brick::render(sf::RenderWindow& window) {
     if (!_isDestroyed) {
         window.draw(_shape);
     }

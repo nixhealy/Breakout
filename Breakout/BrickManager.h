@@ -26,4 +26,7 @@ private:
     sf::Sound _sound;
     int _combo = 0;
     float _time = 0;
+    float _fulltime = 0;
+
+    sf::Shader _shader;
 };
